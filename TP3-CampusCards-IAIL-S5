@@ -1,3 +1,4 @@
+
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -8,7 +9,6 @@ type Etudiant = {
   note: number;
 };
 
-// Tableau des étudiants
 const etudiants: Etudiant[] = [
   { id: 'e1', nom: 'Amine', filiere: 'IAIL S5', note: 14 },
   { id: 'e2', nom: 'Sara', filiere: 'IAIL S5', note: 9 },
@@ -16,12 +16,10 @@ const etudiants: Etudiant[] = [
   { id: 'e4', nom: 'Youssef', filiere: 'IAIL S5', note: 11 },
 ];
 
-// Props du badge
 type BadgeProps = {
   note: number;
 };
 
-// Composant BadgeStatut
 function BadgeStatut({ note }: BadgeProps) {
   const admis = note >= 10;
 
@@ -37,12 +35,10 @@ function BadgeStatut({ note }: BadgeProps) {
   );
 }
 
-// Props de la carte
 type CarteProps = {
   etudiant: Etudiant;
 };
 
-// Composant CarteEtudiant
 function CarteEtudiant({ etudiant }: CarteProps) {
   const { nom, filiere, note } = etudiant;
 
@@ -64,20 +60,16 @@ function CarteEtudiant({ etudiant }: CarteProps) {
   );
 }
 
-// Écran principal
 export default function App() {
 
-  // Calculer le nombre des étudiants admis
   const nombreAdmis = etudiants.filter(
     e => e.note >= 10
   ).length;
 
-  // Calculer le total des notes
   const total = etudiants.reduce(
     (somme, e) => somme + e.note, 0
   );
 
-  // Calculer la moyenne
   const moyenne = (total / etudiants.length).toFixed(1)
     .replace('.', ',');
 
@@ -115,7 +107,6 @@ export default function App() {
   );
 }
 
-// Styles
 const styles = StyleSheet.create({
   page: {
     paddingTop: 56,
